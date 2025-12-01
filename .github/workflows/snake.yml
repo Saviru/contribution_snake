@@ -26,7 +26,7 @@ jobs:
         id: cur-time
         run: echo "time=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
       
-      # Generates the snake animation only if there were contributions
+      # Generates the snake animation
       - name: Generate Snake
         if: steps.check-contributions.outputs.has_contributions == 'true'
         uses: Platane/snk@v3
@@ -43,7 +43,10 @@ jobs:
         with:
           commit_message: 'Added new contributions on ${{ steps.cur-time.outputs.time }}'
           file_pattern: 'dist/*'
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users. noreply.github.com
+          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github. com>
 
-      #- name: Sleep for 3 seconds
-       # id: interval
-        #run: sleep 3s
+      - name: Sleep for 3 seconds
+        id: interval
+        run: sleep 3s
